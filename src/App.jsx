@@ -156,7 +156,7 @@ const MovieDetailsPage = ({ mo, handelBack }) => {
         const fetchedMovies = await Promise.all(
           mo.map(async (movie) => {
             const response = await fetch(
-              `http://www.omdbapi.com/?apikey=${KEY}&i=${movie.movie}`
+              `https://www.omdbapi.com/?apikey=${KEY}&i=${movie.movie}`
             );
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
@@ -489,7 +489,7 @@ function MovieDetails({
     async function getMovie() {
       setIsLoading(true);
       const res = await fetch(
-        `http://www.omdbapi.com/?apikey=${KEY}&i=${selectId}`
+        `https://www.omdbapi.com/?apikey=${KEY}&i=${selectId}`
       );
       const data = await res.json();
       setMovie(data);
@@ -1020,7 +1020,7 @@ function WatchedMovie({ movie, onDelete }) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${movie.movie}`
+          `https://www.omdbapi.com/?apikey=${KEY}&i=${movie.movie}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
