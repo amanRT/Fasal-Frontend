@@ -488,11 +488,10 @@ function MovieDetails({
   useEffect(() => {
     async function getMovie() {
       setIsLoading(true);
-      const res = await fetch(
-        `https://www.omdbapi.com/?apikey=${KEY}&i=${selectId}`
-      );
+      const res = await fetch(`http://localhost:3000/moviedata/${selectId}`);
       const data = await res.json();
       setMovie(data);
+      console.log(data);
       setIsLoading(false);
     }
     getMovie();
@@ -1020,7 +1019,7 @@ function WatchedMovie({ movie, onDelete }) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://www.omdbapi.com/?apikey=${KEY}&i=${movie.movie}`
+          `http://localhost:3000/moviedata/${movie.movie}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
