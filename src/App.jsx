@@ -156,7 +156,7 @@ const MovieDetailsPage = ({ mo, handelBack }) => {
         const fetchedMovies = await Promise.all(
           mo.map(async (movie) => {
             const response = await fetch(
-              `https://www.omdbapi.com/?apikey=${KEY}&i=${movie.movie}`
+              `https://fasal-backend.vercel.app/moviedata/{movie.movie}`
             );
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
@@ -243,7 +243,7 @@ const Mainpage = () => {
     if (userDetails != null) {
       try {
         const response = await fetch(
-          `https://fasal-backend.vercel.app/${userDetails._id}`
+          `https://fasal-backend.vercel.app/moviedata/{${userDetails._id}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -1019,7 +1019,7 @@ function WatchedMovie({ movie, onDelete }) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/moviedata/${movie.movie}`
+          `https://fasal-backend.vercel.app/${movie.movie}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
