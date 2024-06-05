@@ -23,7 +23,7 @@ const MovieDetailsPage = ({ mo, handelBack }) => {
     };
 
     fetchData();
-  }, [mo, KEY]);
+  }, [mo]);
 
   return (
     <div className="movie-details-page">
