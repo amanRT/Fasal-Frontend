@@ -5,7 +5,6 @@ const MovieDetailsPage = ({ mo, handelBack }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(mo);
         const fetchedMovies = await Promise.all(
           mo.map(async (movie) => {
             const response = await fetch(
