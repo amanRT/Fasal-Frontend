@@ -55,7 +55,7 @@ const PublicPlaylistsPage = () => {
       if (playlistid != null) {
         try {
           const response = await fetch(
-            `https://fasal-backend.vercel.app/${playlistid}`
+            `https://fasal-backend.vercel.app/movielists/${playlistid}`
           );
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
