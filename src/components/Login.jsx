@@ -1,48 +1,67 @@
-// import React, { useState } from "react";
-// import {
-//   Container,
-//   Form,
-//   Input,
-//   Button,
-//   Title,
-//   LinkText,
-// } from "./StyledComponents";
+import { useState } from "react";
+import jwtDecode from "jwt-decode";
+// import "./App.css";
+import {
+  Container,
+  Form,
+  Input,
+  Button,
+  Title,
+  LinkText,
+} from "./StyledComponents";
 
-// const Login = ({ setIsLogin }) => {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
+function Login({ setIsLogin, setSign, setUserDetails, fetchUserDetails }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // Handle login logic here
-//   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("https://fasal-backend.vercel.app/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        const decoded = jwtDecode(data.token);
+        setIsLogin(false);
+        fetchUserDetails(decoded.id);
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Failed to login:", error);
+    }
+  };
 
-//   return (
-//     <Container>
-//       <Form onSubmit={handleSubmit}>
-//         <Title>Login</Title>
-//         <Input
-//           type="email"
-//           placeholder="Email"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//           required
-//         />
-//         <Input
-//           type="password"
-//           placeholder="Password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           required
-//         />
-//         <Button type="submit">Login</Button>
-//         <div>
-//           Don't have an account?{" "}
-//           <LinkText onClick={() => setIsLogin(false)}>Sign up</LinkText>
-//         </div>
-//       </Form>
-//     </Container>
-//   );
-// };
-
-// export default Login;
+  return (
+    <Container>
+      <Title>Login</Title>
+      <Form onSubmit={handleSubmit}>
+        <Input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+        />
+        <Input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+        <Button type="submit">Login</Button>
+        <LinkText onClick={() => setSign(false)}>
+          Don't have an account? Sign up
+        </LinkText>
+      </Form>
+    </Container>
+  );
+}
+export default Login;
