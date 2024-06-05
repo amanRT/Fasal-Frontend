@@ -35,18 +35,18 @@ html,
 }
 
 .logo span {
-  font-size: 2em; /* Increased font size */
+  font-size: 2em; 
   margin-right: 10px;
 }
 
 .logo h1 {
   margin: 0;
-  font-size: 2em; /* Increased font size */
+  font-size: 2em; 
 }
 
 .logo h3 {
   margin: 0;
-  font-size: 1.2em; /* Increased font size */
+  font-size: 1.2em; 
   color: #bbb;
 }
 
@@ -69,7 +69,7 @@ html,
   background: none;
   border: none;
   color: white;
-  font-size: 1.2em; /* Increased font size */
+  font-size: 1.2em; 
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -148,7 +148,7 @@ html,
 /* PLAYLIST CREATING CSS */
 .playlist-section {
   padding: 20px;
-  /* background-color: var(--color-primary-light); */
+
   border-radius: 10px;
   color: #fff;
   justify-content: space-evenly;
@@ -349,7 +349,7 @@ html,
 
 /* PUBLIC PLAYL LIST PAGE  */
 :root {
-  --color-primary-light: #7158e2; /* Example color, adjust to your needs */
+  --color-primary-light: #7158e2; 
 }
 
 .public-playlists-page {
@@ -418,7 +418,7 @@ html,
 
 .button-share img {
   vertical-align: middle;
-  margin-right: 8px; /* Adjust the spacing between the image and the text */
+  margin-right: 8px; 
 }
 
 /*  */

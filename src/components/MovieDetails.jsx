@@ -40,9 +40,7 @@ function MovieDetails({
       countRatingDecisions: countRef.current,
     };
     setShowPopup(true);
-    // onAddWatched(newMovie);
-    // onCloseMovie();
-    // setUserPlyList(true);
+   
   }
 
   useEffect(() => {
