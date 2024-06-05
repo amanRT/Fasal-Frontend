@@ -1,33 +1,64 @@
-// import React, { useState } from "react";
-// import {
-//   Container,
-//   Form,
-//   Input,
-//   Button,
-//   Title,
-//   LinkText,
-// } from "./StyledComponents";
-
-// const Signup = ({ setIsLogin }) => {
+// import React, { useState, useEffect, useRef } from "react";
+// import { useLocalStorageState } from "./components/useLocalStorageState";
+// import jwtDecode from "jwt-decode";
+// import StarRating from "./components/StarRating";
+// import { useMovies } from "./components/useMovie";
+// import { useKey } from "./components/useKey";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import { useNavigate, useParams } from "react-router-dom";
+// const Signup = ({ setIsLogin, setSign, setUserDetails, fetchUserDetails }) => {
 //   const [firstName, setFirstName] = useState("");
 //   const [lastName, setLastName] = useState("");
 //   const [email, setEmail] = useState("");
 //   const [password, setPassword] = useState("");
 //   const [confirmPassword, setConfirmPassword] = useState("");
+//   const [error, setError] = useState("");
 
-//   const handleSubmit = (e) => {
+//   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     if (password !== confirmPassword) {
-//       alert("Passwords do not match");
+//       setError("Passwords do not match");
 //       return;
 //     }
-//     // Handle signup logic here
+
+//     try {
+//       const response = await fetch(
+//         "https://fasal-backend.vercel.app/userRegister",
+//         {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({
+//             fname: firstName,
+//             lname: lastName,
+//             email,
+//             password,
+//           }),
+//         }
+//       );
+//       const data = await response.json();
+//       if (response.ok) {
+//         localStorage.setItem("token", data.token);
+//         const decoded = jwtDecode(data.token);
+//         // console.log(decoded.id);
+//         setIsLogin(false);
+//         fetchUserDetails(decoded.id);
+//       } else {
+//         const data2 = await response.json();
+//         setError(data2.message);
+//       }
+//     } catch (error) {
+//       console.error("Error during signup:", error);
+//       setError("An error occurred during signup. Please try again later.");
+//     }
 //   };
 
 //   return (
 //     <Container>
 //       <Form onSubmit={handleSubmit}>
 //         <Title>Signup</Title>
+//         {error && <ErrorMessage message={error} />}
 //         <Input
 //           type="text"
 //           placeholder="First Name"
@@ -66,11 +97,9 @@
 //         <Button type="submit">Signup</Button>
 //         <div>
 //           Have an account?{" "}
-//           <LinkText onClick={() => setIsLogin(true)}>Login</LinkText>
+//           <LinkText onClick={() => setSign(true)}>Login</LinkText>
 //         </div>
 //       </Form>
 //     </Container>
 //   );
 // };
-
-// export default Signup;

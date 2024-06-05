@@ -4,3 +4,5 @@ then execute
 "npm run dev"
 this will start the app and ake it live on the localhost
 then first signup and the you can use the app
+
+GIHUB BACKEND LINK:https://github.com/amanRT/Fasal-Backend-

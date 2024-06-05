@@ -243,7 +243,7 @@ const Mainpage = () => {
     if (userDetails != null) {
       try {
         const response = await fetch(
-          `https://fasal-backend.vercel.app/moviedata/{${userDetails._id}`
+          `https://fasal-backend.vercel.app/${userDetails._id}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
