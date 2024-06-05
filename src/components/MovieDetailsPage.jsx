@@ -5,10 +5,11 @@ const MovieDetailsPage = ({ mo, handelBack }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(mo);
         const fetchedMovies = await Promise.all(
           mo.map(async (movie) => {
             const response = await fetch(
-              `https://fasal-backend.vercel.app/moviedata/{movie.movie}`
+              `https://fasal-backend.vercel.app/moviedata/${movie.movie}`
             );
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
@@ -16,6 +17,7 @@ const MovieDetailsPage = ({ mo, handelBack }) => {
             return response.json();
           })
         );
+
         setMovies(fetchedMovies);
       } catch (error) {
         console.error("Failed to fetch movie data:", error);
