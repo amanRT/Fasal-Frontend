@@ -6,16 +6,16 @@ function PlaylistList({
   onDelete,
   handleToggle,
 }) {
-  const [isPublic, setIsPublic] = useState(false); // Default to "No"
+  const [isPublic, setIsPublic] = useState(false); 
 
   const handleClick = (event) => {
-    event.stopPropagation(); // Prevent event bubbling
+    event.stopPropagation(); 
     onSelectPlaylist(list._id);
     setPlyName(list.name);
   };
 
   const handleDelete = (event) => {
-    event.stopPropagation(); // Prevent event bubbling
+    event.stopPropagation(); 
     onDelete(list._id);
   };
 
