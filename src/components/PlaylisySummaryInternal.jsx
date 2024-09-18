@@ -33,7 +33,7 @@ function PlaylisySummaryInternal({ plyName, selectListId }) {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-          body: JSON.stringify({ isPublic: !isPublic }), 
+          body: JSON.stringify({ isPublic: !isPublic }),
         }
       );
 
@@ -43,7 +43,7 @@ function PlaylisySummaryInternal({ plyName, selectListId }) {
 
       const result = await response.json();
 
-      setIsPublic(!isPublic); 
+      setIsPublic(!isPublic);
     } catch (error) {
       console.error("Error updating playlist:", error);
     }

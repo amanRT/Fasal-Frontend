@@ -40,7 +40,6 @@ function MovieDetails({
       countRatingDecisions: countRef.current,
     };
     setShowPopup(true);
-   
   }
 
   useEffect(() => {
