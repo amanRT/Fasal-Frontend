@@ -115,6 +115,7 @@ const PublicPlaylistsPage = () => {
       }
     };
     fetchPlaylists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   useEffect(() => {
@@ -314,6 +315,7 @@ const Mainpage = () => {
 
   useEffect(() => {
     fetchPlaylists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userDetails]);
 
   useEffect(() => {}, [render]);
@@ -650,7 +652,6 @@ function MovieDetailOverlay({ selectId, onClose, onAddWatched, watched, userDeta
 
   const {
     Title: title,
-    Year: year,
     Poster: poster,
     Runtime: runtime,
     imdbRating,
@@ -791,6 +792,7 @@ function PlayListForm({ setShowPopup, userDetails, movieId, onPlaylistChange }) 
 
   useEffect(() => {
     fetchPlaylists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showCreateForm]);
 
   const onSelectPlaylist = async (id) => {
